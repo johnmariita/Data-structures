@@ -9,4 +9,5 @@ void print_list(mylist *head)
 		printf("%d ", head->val);
 		head = head->next;
 	}
+	printf("\n");
 }
