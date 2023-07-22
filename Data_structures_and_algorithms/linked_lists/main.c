@@ -15,5 +15,7 @@ int main()
 	while (i > 0)
 		add_beginning(&head, i--);
 	print_list(head);
+	add_at_index(&head, 5, 50);
+	print_list(head);
 	return (0);
 }

@@ -7,5 +7,6 @@ typedef struct mylist{
 }mylist;
 void add_beginning(mylist **head, int value);
 void add_end(mylist **head, int value);
+void add_at_index(mylist **head, int index, int val);
 void print_list(mylist *head);
 #endif
