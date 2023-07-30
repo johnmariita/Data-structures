@@ -5,30 +5,23 @@
 void add_at_index(mylist **head, int index, int val)
 {
 	mylist *ptr = *head;
-	mylist *new_list;
-	int i = 1;
-
+	mylist *new_list = malloc(sizeof(mylist));
+	new_list->val = val;
+	new_list->next = NULL;
+	int i;
+	if (nodes(ptr) + 1 < index)
+	{
+		printf("requesting addition at index %d whereas we only have %d nodes\n", index, nodes(ptr));
+		return;
+	}
 	if (index == 1)
 	{
-		ptr = *head;
-		new_list = malloc(sizeof(mylist));
-		new_list->val = val;
 		new_list->next = ptr;
 		*head = new_list;
+		return;
 	}
-	else
-	{
-		while (i <= index && ptr->next)
-		{
-			if (i == index - 1)
-			{
-				new_list = malloc(sizeof(mylist));
-				new_list->val = val;
-				new_list->next = ptr->next;
-				ptr->next = new_list;
-			}
-			i++;
-			ptr = ptr->next;
-		}
-	}
+	for (i = 0; i < index - 2 && ptr; i++)
+		ptr = ptr->next;
+	new_list->next = ptr->next;
+	ptr->next = new_list;
 }
